@@ -25,7 +25,7 @@ print(calendar.month(year, month))
 import datetime
 
 def greet_user():
-    # Get the current time
+    # Get the current time using this code
     now = datetime.datetime.now()
     current_hour = now.hour
 
