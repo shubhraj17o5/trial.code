@@ -3,87 +3,146 @@
 
 def choose_genre():
     """Let user choose their preferred genre"""
-    print("🎭 CHOOSE YOUR STORY GENRE 🎭")
-    print("1. Horror/Scary")
-    print("2. Comedy/Funny") 
-    print("3. Adventure/Action")
-    print("4. Romance/Love")
-    print("5. Sci-Fi/Space")
-    print("6. Fantasy/Magic")
-    print("7. School/College")
-    print("8. Sports")
-    print("-" * 40)
-    
-    choice = input("Enter your choice (1-8): ")
-    return choice
+    while True:
+        print("🎭 CHOOSE YOUR STORY GENRE 🎭")
+        print("1. Horror/Scary")
+        print("2. Comedy/Funny") 
+        print("3. Adventure/Action")
+        print("4. Romance/Love")
+        print("5. Sci-Fi/Space")
+        print("6. Fantasy/Magic")
+        print("7. School/College")
+        print("8. Sports")
+        print("-" * 40)
+        
+        choice = input("Enter your choice (1-8): ").strip()
+        
+        # Validate choice
+        if choice in ['1', '2', '3', '4', '5', '6', '7', '8']:
+            return choice
+        else:
+            print("❌ Invalid choice! Please enter a number between 1 and 8.")
+            print("-" * 40)
 
+def validate_text_input(prompt, min_length=1, max_length=50):
+    """Validate text input - ensures it's not empty and within length limits"""
+    while True:
+        user_input = input(prompt).strip()
+        
+        if len(user_input) == 0:
+            print("❌ Please enter something! Don't leave it blank.")
+        elif len(user_input) > max_length:
+            print(f"❌ Too long! Please keep it under {max_length} characters.")
+        elif user_input.isdigit():
+            print("❌ Please enter a word, not just numbers!")
+        else:
+            return user_input
+
+def validate_number_input(prompt, min_val=1, max_val=100):
+    """Validate number input - ensures it's a valid number within range"""
+    while True:
+        user_input = input(prompt).strip()
+        
+        try:
+            number = int(user_input)
+            if min_val <= number <= max_val:
+                return str(number)
+            else:
+                print(f"❌ Please enter a number between {min_val} and {max_val}.")
+        except ValueError:
+            print("❌ Please enter a valid number!")
+
+def validate_yes_no_input(prompt):
+    """Validate yes/no input"""
+    while True:
+        user_input = input(prompt).strip().lower()
+        
+        if user_input in ['yes', 'y', 'yeah', 'yep']:
+            return 'yes'
+        elif user_input in ['no', 'n', 'nope', 'nah']:
+            return 'no'
+        else:
+            print("❌ Please answer with 'yes' or 'no' (or 'y'/'n').")
 def get_words_for_genre(genre):
-    """Get words specific to the chosen genre"""
+    """Get words specific to the chosen genre with validation"""
     print(f"\nGreat choice! Now I need some words for your story...")
     print("Don't overthink - just say the first thing that comes to mind!")
     print("-" * 50)
     
     if genre == "1":  # Horror
-        adjective1 = input("Enter a scary adjective (creepy, haunted, dark): ")
-        place = input("Enter a spooky place (cemetery, basement, forest): ")
-        sound = input("Enter a scary sound (scream, howl, creak): ")
-        object_item = input("Enter an object (candle, mirror, book): ")
+        adjective1 = validate_text_input("Enter a scary adjective (creepy, haunted, dark): ")
+        place = validate_text_input("Enter a spooky place (cemetery, basement, forest): ")
+        sound = validate_text_input("Enter a scary sound (scream, howl, creak): ")
+        object_item = validate_text_input("Enter an object (candle, mirror, book): ")
         
     elif genre == "2":  # Comedy
-        adjective1 = input("Enter a funny adjective (silly, ridiculous, goofy): ")
-        place = input("Enter a place (kitchen, bathroom, mall): ")
-        sound = input("Enter a funny sound (giggle, snort, burp): ")
-        object_item = input("Enter an everyday object (banana, shoe, spoon): ")
+        adjective1 = validate_text_input("Enter a funny adjective (silly, ridiculous, goofy): ")
+        place = validate_text_input("Enter a place (kitchen, bathroom, mall): ")
+        sound = validate_text_input("Enter a funny sound (giggle, snort, burp): ")
+        object_item = validate_text_input("Enter an everyday object (banana, shoe, spoon): ")
         
     elif genre == "3":  # Adventure
-        adjective1 = input("Enter an exciting adjective (dangerous, thrilling, epic): ")
-        place = input("Enter an adventure location (jungle, mountain, cave): ")
-        sound = input("Enter an action sound (crash, boom, splash): ")
-        object_item = input("Enter a tool/weapon (sword, rope, map): ")
+        adjective1 = validate_text_input("Enter an exciting adjective (dangerous, thrilling, epic): ")
+        place = validate_text_input("Enter an adventure location (jungle, mountain, cave): ")
+        sound = validate_text_input("Enter an action sound (crash, boom, splash): ")
+        object_item = validate_text_input("Enter a tool/weapon (sword, rope, map): ")
         
     elif genre == "4":  # Romance
-        adjective1 = input("Enter a romantic adjective (beautiful, charming, lovely): ")
-        place = input("Enter a romantic place (beach, cafe, garden): ")
-        sound = input("Enter a gentle sound (whisper, sigh, melody): ")
-        object_item = input("Enter a romantic object (flower, letter, ring): ")
+        adjective1 = validate_text_input("Enter a romantic adjective (beautiful, charming, lovely): ")
+        place = validate_text_input("Enter a romantic place (beach, cafe, garden): ")
+        sound = validate_text_input("Enter a gentle sound (whisper, sigh, melody): ")
+        object_item = validate_text_input("Enter a romantic object (flower, letter, ring): ")
         
     elif genre == "5":  # Sci-Fi
-        adjective1 = input("Enter a futuristic adjective (advanced, alien, robotic): ")
-        place = input("Enter a sci-fi place (spaceship, planet, laboratory): ")
-        sound = input("Enter a tech sound (beep, zap, hum): ")
-        object_item = input("Enter a tech object (laser, computer, robot): ")
+        adjective1 = validate_text_input("Enter a futuristic adjective (advanced, alien, robotic): ")
+        place = validate_text_input("Enter a sci-fi place (spaceship, planet, laboratory): ")
+        sound = validate_text_input("Enter a tech sound (beep, zap, hum): ")
+        object_item = validate_text_input("Enter a tech object (laser, computer, robot): ")
         
     elif genre == "6":  # Fantasy
-        adjective1 = input("Enter a magical adjective (enchanted, mystical, ancient): ")
-        place = input("Enter a fantasy place (castle, forest, tower): ")
-        sound = input("Enter a magical sound (chant, spell, roar): ")
-        object_item = input("Enter a magical object (wand, potion, crystal): ")
+        adjective1 = validate_text_input("Enter a magical adjective (enchanted, mystical, ancient): ")
+        place = validate_text_input("Enter a fantasy place (castle, forest, tower): ")
+        sound = validate_text_input("Enter a magical sound (chant, spell, roar): ")
+        object_item = validate_text_input("Enter a magical object (wand, potion, crystal): ")
         
     elif genre == "7":  # School
-        adjective1 = input("Enter a school-related adjective (smart, confused, sleepy): ")
-        place = input("Enter a school place (classroom, cafeteria, library): ")
-        sound = input("Enter a school sound (bell, chatter, pencil): ")
-        object_item = input("Enter a school object (book, calculator, backpack): ")
+        adjective1 = validate_text_input("Enter a school-related adjective (smart, confused, sleepy): ")
+        place = validate_text_input("Enter a school place (classroom, cafeteria, library): ")
+        sound = validate_text_input("Enter a school sound (bell, chatter, pencil): ")
+        object_item = validate_text_input("Enter a school object (book, calculator, backpack): ")
         
-    else:  # Sports
-        adjective1 = input("Enter a sports adjective (fast, strong, competitive): ")
-        place = input("Enter a sports place (stadium, gym, field): ")
-        sound = input("Enter a sports sound (cheer, whistle, thud): ")
-        object_item = input("Enter sports equipment (ball, bat, helmet): ")
+    elif genre == "8":  # Sports
+        adjective1 = validate_text_input("Enter a sports adjective (fast, strong, competitive): ")
+        place = validate_text_input("Enter a sports place (stadium, gym, field): ")
+        sound = validate_text_input("Enter a sports sound (cheer, whistle, thud): ")
+        object_item = validate_text_input("Enter sports equipment (ball, bat, helmet): ")
     
-    # Common words for all genres
-    name = input("Enter a character name: ")
-    animal = input("Enter an animal: ")
-    color = input("Enter a color: ")
-    number = input("Enter a number (1-50): ")
-    verb = input("Enter a past tense verb (ran, jumped, fell): ")
-    food = input("Enter a food: ")
+    else:
+        # This should never happen due to validation in choose_genre()
+        print(f"❌ Error: Invalid genre '{genre}'. Using Comedy as default.")
+        adjective1 = validate_text_input("Enter a funny adjective (silly, ridiculous, goofy): ")
+        place = validate_text_input("Enter a place (kitchen, bathroom, mall): ")
+        sound = validate_text_input("Enter a funny sound (giggle, snort, burp): ")
+        object_item = validate_text_input("Enter an everyday object (banana, shoe, spoon): ")
+    
+    # Common words for all genres with validation
+    name = validate_text_input("Enter a character name: ")
+    animal = validate_text_input("Enter an animal: ")
+    color = validate_text_input("Enter a color: ")
+    number = validate_number_input("Enter a number (1-100): ", 1, 100)
+    verb = validate_text_input("Enter a past tense verb (ran, jumped, fell): ")
+    food = validate_text_input("Enter a food: ")
     
     return adjective1, place, sound, object_item, name, animal, color, number, verb, food
 
 def create_genre_story(genre, words):
     """Create story based on chosen genre"""
     adj1, place, sound, obj, name, animal, color, number, verb, food = words
+    
+    # This should never happen due to validation, but just in case
+    if genre not in ['1', '2', '3', '4', '5', '6', '7', '8']:
+        print(f"❌ Error: Invalid genre '{genre}'. Using Comedy as default.")
+        genre = "2"  # Default to Comedy
     
     if genre == "1":  # Horror
         story = f"""
@@ -232,8 +291,8 @@ def main():
         print("🌟"*52)
         
         # Ask if user wants another story
-        again = input("\nWant to create another story? (yes/no): ").lower()
-        if again not in ['yes', 'y']:
+        again = validate_yes_no_input("\nWant to create another story? (yes/no): ")
+        if again == 'no':
             print("\n🎭 Thanks for playing! Hope you enjoyed your stories! 🎭")
             break
         print("\n" + "="*60)
