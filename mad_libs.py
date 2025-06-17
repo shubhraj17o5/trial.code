@@ -5,55 +5,68 @@ def get_user_input():
     """Get all the words needed from the user"""
     print("Welcome to Mad Libs Generator!")
     print("I'll ask you for some words, and then create a funny story!")
+    print("Don't think too hard - just say the first thing that comes to mind!")
     print("-" * 50)
     
-    # Get words from user
-    adjective1 = input("Enter an adjective (describing word): ")
-    noun1 = input("Enter a noun (person, place, or thing): ")
-    verb1 = input("Enter a verb (action word): ")
-    adjective2 = input("Enter another adjective: ")
-    noun2 = input("Enter another noun: ")
-    verb2 = input("Enter another verb: ")
+    # Get words from user with better examples
+    adjective1 = input("Enter a FUNNY adjective (like crazy, silly, weird): ")
+    person_name = input("Enter a person's name (friend, celebrity, or made-up): ")
+    verb1 = input("Enter a verb ending in -ing (like running, dancing, singing): ")
+    adjective2 = input("Enter an adjective describing size (huge, tiny, massive): ")
+    place = input("Enter a place (school, park, kitchen, Mars): ")
+    verb2 = input("Enter a past tense verb (jumped, screamed, laughed): ")
     color = input("Enter a color: ")
     animal = input("Enter an animal: ")
-    food = input("Enter a type of food: ")
-    number = input("Enter a number: ")
+    food = input("Enter your favorite food: ")
+    number = input("Enter a number between 1-100: ")
     
-    return adjective1, noun1, verb1, adjective2, noun2, verb2, color, animal, food, number
+    return adjective1, person_name, verb1, adjective2, place, verb2, color, animal, food, number
 
-def create_story1(adj1, noun1, verb1, adj2, noun2, verb2, color, animal, food, number):
+def create_story1(adj1, name, verb1, adj2, place, verb2, color, animal, food, number):
     """Create the first mad libs story"""
     story = f"""
-    🎉 THE CRAZY SCHOOL DAY 🎉
+    🎉 THE WEIRD DAY 🎉
     
-    Yesterday was a {adj1} day at school! During lunch, I decided to {verb1} 
-    to the {noun1} with my {adj2} friend. We saw a {color} {animal} eating 
-    {food} near the {noun2}. It was so funny that we {verb2} for {number} 
-    minutes straight! What a {adj1} adventure!
+    My friend {name} had a {adj1} day yesterday! They were {verb1} to the 
+    {place} when they saw a {adj2} {color} {animal}. The {animal} was eating 
+    {food} and making weird noises! {name} got so surprised that they {verb2} 
+    {number} times in a row. Everyone started laughing because it looked so {adj1}!
+    
+    From that day on, {name} always brings {food} whenever they go to the {place}.
     """
     return story
 
-def create_story2(adj1, noun1, verb1, adj2, noun2, verb2, color, animal, food, number):
+def create_story2(adj1, name, verb1, adj2, place, verb2, color, animal, food, number):
     """Create the second mad libs story"""
     story = f"""
-    🚀 SPACE ADVENTURE 🚀
+    🚀 {name.upper()}'S ADVENTURE 🚀
     
-    Captain {noun1} was on a {adj1} mission to planet {noun2}. The spaceship 
-    could {verb1} at {number} miles per hour! On the planet, they discovered 
-    {color} aliens who loved to eat {food}. The aliens were very {adj2} and 
-    taught the captain how to {verb2} like a {animal}. What an amazing journey!
+    Captain {name} was {verb1} through space when their ship crashed on a {adj1} 
+    planet. The planet was full of {adj2} {color} creatures that looked like {animal}s! 
+    
+    These alien-{animal}s only ate {food} and spoke by making {verb2} sounds. 
+    Captain {name} had to learn their language by {verb1} around and eating 
+    {food} for {number} days straight! 
+    
+    Finally, the {adj1} aliens helped fix the spaceship, and {name} returned home 
+    with a stomach full of {food}!
     """
     return story
 
-def create_story3(adj1, noun1, verb1, adj2, noun2, verb2, color, animal, food, number):
+def create_story3(adj1, name, verb1, adj2, place, verb2, color, animal, food, number):
     """Create the third mad libs story"""
     story = f"""
-    🏰 MAGICAL KINGDOM 🏰
+    🏰 THE MAGIC RECIPE 🏰
     
-    In the {adj1} kingdom of {noun1}, there lived a {adj2} wizard who could 
-    {verb1} anything into {food}! One day, a {color} {animal} came to the 
-    {noun2} asking for help. The wizard decided to {verb2} a magic spell 
-    exactly {number} times, and something incredible happened!
+    Wizard {name} lived in a {adj1} tower near the {place}. One day, while {verb1} 
+    in the kitchen, they accidentally mixed {food} with {color} magic powder!
+    
+    POOF! A {adj2} {animal} appeared and started dancing around the room! 
+    The {animal} {verb2} exactly {number} times before turning all the furniture 
+    into {food}!
+    
+    Now wizard {name} has a pet {animal} and a house made entirely of {food}. 
+    Visitors always leave the {place} feeling very {adj1} and very full!
     """
     return story
 
