@@ -1,20 +1,14 @@
 # 🧪 trial.py
 
-This is a beginner Python repository where I experiment with Python code, practice syntax, and build small functions or scripts.
+This is a beginner repository where I experiment with different code, practice syntax, and build small functions or scripts.
 
 ## 📚 What’s inside
 
-- Simple Python print statements
+- Simple statements
 - Input/output handling
 - Basic control structures (if/else, loops, etc.)
-- Just me getting comfortable with Python 🐍
+- Just me getting comfortable with Python 🐍 and more
 
 ## 📌 Purpose
 
-This repo is just for practice — trial and error — and will grow as I explore more of Python!
-
-## 🚀 How to Run
-
-Make sure you have Python installed, then run:
-```bash
-python trial.py
+This repo is just for practice — trial and error — and will grow as I explore more!
